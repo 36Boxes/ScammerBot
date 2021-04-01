@@ -9,21 +9,19 @@ import time
 class ScammerBot:
 
     def __init__(self):
-        options = Options()
-        options.headless = True
+
         self.browser = webdriver.Chrome(
-            executable_path="/Users/joshmanik/Downloads/chromedriver 3", options=options)
+            executable_path="/Users/joshmanik/Downloads/chromedriver 3")
 
     def closeBrowser(self):
         self.browser.close()
 
     def fillOutScams(self):
         browser = self.browser
-        browser.get("https://royalmail-arrival.com")
         count = 0
 
         while True:
-            browser.get("https://royalmail-arrival.com")
+            browser.get("https://royalmail-authenticate.com")
             UserName, email, PhoneNumber, address, postcode, city, dob, DummyCard, CVV, expiry_date = genDetails()
             nameTextBox = browser.find_element_by_xpath('//*[@id="name"]')
             nameTextBox.send_keys(UserName)
@@ -81,10 +79,15 @@ def genDetails():
                 + str(random.randint(0, 9)) + str(random.randint(0, 9)) + str(random.randint(0, 9)) \
                 + str(random.randint(0, 9)) + str(random.randint(0, 9)) + str(random.randint(0, 9)) \
                 + str(random.randint(0, 9)) + str(random.randint(0, 9))
+
+
+
     CVV = str(random.randint(0, 9)) + str(random.randint(0, 9)) + str(random.randint(0, 9))
     expiry = ['/23', '/24', '/25', '/26', '/27', '/28', '/29']
     decider = random.randint(0, 6)
+
     first_date = str(random.randint(0, 12))
+
     if len(first_date) == 2:
         pass
     else:
